@@ -1,2 +1,2 @@
 1. can remove logs (indicate file path in the parameter)
-2. can remove output (generate the output directory after running analyzer, )
+2. can remove output (generate the output directory after running analyzer)
