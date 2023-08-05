@@ -1,4 +1,5 @@
 import os
+import re
 
 class AmunLogParser:
     
@@ -8,40 +9,81 @@ class AmunLogParser:
                 with open(filename, 'r') as f:
                     self.filename = filename
                     content = f.read()
-                    self.contentList = content.split('\n')
+                    self.content_list = content.strip().split('\n')
             except IOError:
-                self.contentList = None
+                self.content_list = None
         else:
-            self.contentList = None
+            self.content_list = None
 				
 
-
+# add a detailed annotation in the future (percondition, postcondition...)
     def amun_request_handler_log_parser(self):
-        if self.contentList is None:
-            print('no file or IO error')
+        if self.content_list is None:
             return None
 
-        # the following is just a test, will be improved in the future 
-        i = 0
         log_data = {}
         log_data['IP'] = {}
-        log_data['Stages'] = {}
-        for line in self.contentList:
-            line_data = line.split(' ')
-            if log_data['IP'].get(line_data[7]) is None:
-                log_data['IP'][line_data[7]] = 1
+        log_data['stages'] = {}
+        log_data['port_scanned'] = {}
+        log_data['entry_num'] = 0
+
+        pattern1 = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) (\S+) \[amun_request_handler\] unknown vuln \(Attacker: (\S+) Port: (\d+), Mess: \[(.*)\] \((\d*)\) Stages: \[(.*)\]\)'
+        pattern2 = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) (\S+) \[amun_request_handler\] incomplete vuln \(Attacker: (\S+) Port: (\d+), Mess: \[(.*)\] \((\d*)\) Stages: \[(.*)\]\)'
+        pattern3 = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) (\S+) \[amun_request_handler\] PortScan Detected on Port: (\d+) \((\S+)\)' 
+
+        for line in self.content_list:
+            log_data['entry_num'] += 1
+        
+            match1 = re.match(pattern1, line)
+            match2 = re.match(pattern2, line)
+            match3 = re.match(pattern3, line)
+
+            if match1 or match2:
+                if match1:
+                    match = match1
+                else:
+                    match = match2
+
+                attackerIP = match.group(3)
+                log_data = self.update_log_data(log_data, 'IP', attackerIP)
+
+                stage_list = match.group(7).split(", ")
+                if len(stage_list) == 1 and stage_list[0] != '':
+                    log_data = self.update_log_data(log_data, 'stages', stage_list[0])
+                elif len(stage_list) > 1:
+                    for stage in stage_list:
+                        log_data = self.update_log_data(log_data, 'stages', stage)
+                else:
+                    continue
+
+            elif match3:
+                own_port = int(match3.group(3))
+                attackerIP = match3.group(4)
+                log_data = self.update_log_data(log_data, 'port_scanned', own_port)
+                log_data = self.update_log_data(log_data, 'IP', attackerIP)
             else:
-                log_data['IP'][line_data[7]] = log_data['IP'].get(line_data[7]) + 1
-            i = i + 1
-            if i == 15:
-                break
+                continue
+ 
         return log_data
 
 
-parser = AmunLogParser('logs/amun_request_handler.log.2023-07-27')
+    def update_log_data(self, log_data, key, value):
+        if log_data[key].get(value):
+            log_data[key][value] += 1
+        else:
+            log_data[key][value] = 1
+        
+        return log_data
+
+
+
+
+
+parser = AmunLogParser('./amun_request_handler.log.2023-07-23')
 log_data = parser.amun_request_handler_log_parser()
-IP_table = log_data['IP']
-print(max(IP_table.values()))
+print(log_data)
+# IP_table = log_data['IP']
+# print(max(IP_table.values()))
 
 
 
