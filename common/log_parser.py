@@ -55,7 +55,6 @@ class AmunLogParser:
                         log_data = self.update_log_data(log_data, 'stages', stage)
                 else:
                     continue
-
             elif match3:
                 own_port = int(match3.group(3))
                 attackerIP = match3.group(4)
@@ -72,7 +71,7 @@ class AmunLogParser:
             log_data[key][value] += 1
         else:
             log_data[key][value] = 1
-        
+       
         return log_data
 
 
@@ -84,12 +83,3 @@ log_data = parser.amun_request_handler_log_parser()
 print(log_data)
 # IP_table = log_data['IP']
 # print(max(IP_table.values()))
-
-
-
-
-
-
-
-
-
