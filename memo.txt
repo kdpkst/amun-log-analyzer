@@ -1,2 +1,2 @@
-1. can remove logs (indicate file path in the parameter)
-2. can remove output (generate the output directory after running analyzer)
+1. users must indicate filename (amun log file) in the terminal 
+2. generate an output directory (contain word report and visualization) after running the analyzer
