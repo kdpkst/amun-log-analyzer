@@ -1,7 +1,7 @@
 import os
 import re
 
-class AmunLogParser:
+class amun_log_parser:
     
     def __init__(self, filename):
         if os.path.exists(filename):
@@ -73,13 +73,3 @@ class AmunLogParser:
             log_data[key][value] = 1
        
         return log_data
-
-
-
-
-
-parser = AmunLogParser('./amun_request_handler.log.2023-07-23')
-log_data = parser.amun_request_handler_log_parser()
-print(log_data)
-# IP_table = log_data['IP']
-# print(max(IP_table.values()))
