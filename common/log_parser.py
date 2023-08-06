@@ -25,14 +25,12 @@ class amun_log_parser:
         log_data['IP'] = {}
         log_data['stages'] = {}
         log_data['port_scanned'] = {}
-        log_data['entry_num'] = 0
 
         pattern1 = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) (\S+) \[amun_request_handler\] unknown vuln \(Attacker: (\S+) Port: (\d+), Mess: \[(.*)\] \((\d*)\) Stages: \[(.*)\]\)'
         pattern2 = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) (\S+) \[amun_request_handler\] incomplete vuln \(Attacker: (\S+) Port: (\d+), Mess: \[(.*)\] \((\d*)\) Stages: \[(.*)\]\)'
         pattern3 = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) (\S+) \[amun_request_handler\] PortScan Detected on Port: (\d+) \((\S+)\)' 
 
         for line in self.content_list:
-            log_data['entry_num'] += 1
         
             match1 = re.match(pattern1, line)
             match2 = re.match(pattern2, line)
