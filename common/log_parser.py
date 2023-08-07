@@ -1,7 +1,7 @@
 import os
 import re
 
-class amun_log_parser:
+class AmunLogParser:
     
     def __init__(self, filename):
         if os.path.exists(filename):

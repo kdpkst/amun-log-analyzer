@@ -3,10 +3,10 @@ sys.path.append('common')
 import log_parser
 import os
 
-class request_handler_analyzer:
+class AmunRequestHandlerAnalyzer:
 
     def data_processing(self, filename):
-        parser = log_parser.amun_log_parser(filename)
+        parser = log_parser.AmunLogParser(filename)
         log_data = parser.amun_request_handler_log_parser()
 
         # change the dictionary to sorted list
