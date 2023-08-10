@@ -1,0 +1,4 @@
+1. amun_request_handler_analyzer.py: use geoip to implement geolocation resolution 
+2. amun_request_handler_analyzer.py: implement data visualization
+3. main_analyzer.py: test different arguments
+4. develope parser and analyzer for other logs in amun

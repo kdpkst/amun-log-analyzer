@@ -10,10 +10,10 @@ def main():
     logs_dir = args.recursion
 
     if filename is None and logs_dir is None:
-        print("please specify arguments\nuse -h or --help to read help message")
+        print("please specify necessary arguments.")
     else:
         if filename is not None and logs_dir is not None:
-            print("wrong usage")
+            print("-f and -r cannot be used at the same time.")
         elif filename is not None:
             argument_f(filename, output_dir)
         elif logs_dir is not None:
@@ -39,14 +39,13 @@ def argument_f(filename, output_dir):
             analyzer.data_report(filename, output_dir)
 
 
-# test this function in the future
 def argument_o(logs_dir, output_dir):
     for root_path, subdirectories, files in os.walk(logs_dir):
         if not os.path.exists(root_path):
             print("the specified directory does not exit.")
             break
         elif len(subdirectories) != 0:
-            print("wrong usage")
+            print("the specified dir can only contain log files")
             break
         else:
             for file in files:

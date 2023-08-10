@@ -1,2 +1,0 @@
-1. users must indicate filename (amun log file) in the terminal 
-2. generate an output directory (contain word report and visualization) after running the analyzer
