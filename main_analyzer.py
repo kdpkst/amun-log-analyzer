@@ -30,16 +30,28 @@ def argument_parser():
 
 
 def argument_f(filename, output_dir):
-    # whether filepath correct/exits?? improve it future
-    basename = os.path.basename(filename)
-    if basename.startswith('amun_request_handler'):
-        analyzer = arha.AmunRequestHandlerAnalyzer()
-        analyzer.data_report(filename, output_dir)
+    if not os.path.exists(filename):
+        print("the specified file does not exit.")
+    else:
+        basename = os.path.basename(filename)
+        if basename.startswith('amun_request_handler'):
+            analyzer = arha.AmunRequestHandlerAnalyzer()
+            analyzer.data_report(filename, output_dir)
 
 
-# develop this part future
+# test this function in the future
 def argument_o(logs_dir, output_dir):
-    pass
+    for root_path, subdirectories, files in os.walk(logs_dir):
+        if not os.path.exists(root_path):
+            print("the specified directory does not exit.")
+            break
+        elif len(subdirectories) != 0:
+            print("wrong usage")
+            break
+        else:
+            for file in files:
+                filename = root_path + '/' + file
+                argument_f(filename, output_dir)
 
 
 if __name__== "__main__" :
