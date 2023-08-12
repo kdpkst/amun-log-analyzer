@@ -10,14 +10,14 @@ def main():
     logs_dir = args.recursion
 
     if filename is None and logs_dir is None:
-        print("please specify necessary arguments.")
+        print("please specify necessary arguments [-f] [-r].")
     else:
         if filename is not None and logs_dir is not None:
             print("-f and -r cannot be used at the same time.")
         elif filename is not None:
             argument_f(filename, output_dir)
         elif logs_dir is not None:
-            argument_o(logs_dir, output_dir)
+            argument_r(logs_dir, output_dir)
  
 
 def argument_parser():
@@ -30,27 +30,49 @@ def argument_parser():
 
 
 def argument_f(filename, output_dir):
-    if not os.path.exists(filename):
-        print("the specified file does not exit.")
-    else:
+    if os.path.exists(filename) and os.path.isfile(filename):
         basename = os.path.basename(filename)
-        if basename.startswith('amun_request_handler'):
+        if basename.startswith('amun_request_handler.log'):
             analyzer = arha.AmunRequestHandlerAnalyzer()
             analyzer.data_report(filename, output_dir)
-
-
-def argument_o(logs_dir, output_dir):
-    for root_path, subdirectories, files in os.walk(logs_dir):
-        if not os.path.exists(root_path):
-            print("the specified directory does not exit.")
-            break
-        elif len(subdirectories) != 0:
-            print("the specified dir can only contain log files")
-            break
+            # analyzer.data_visulization(filename, output_dir)
+        elif basename.startswith("amun_server.log"):
+            pass
+        elif basename.startswith("download.log"):
+            pass
+        elif basename.startswith("exploits.log"):
+            pass
+        elif basename.startswith("shellcode_manager.log"):
+            pass
+        elif basename.startswith("submissions.log"):
+            pass
+        elif basename.startswith("successfull_downloads.log"):
+            pass
+        elif basename.startswith("unknown_downloads.log"):
+            pass
+        elif basename.startswith("vulnerabilities.log"):
+            pass
+        elif basename.startswith("analysis.log"):
+            pass
         else:
-            for file in files:
-                filename = root_path + '/' + file
-                argument_f(filename, output_dir)
+            print("wrong file type. Only amun log file is accepted.")
+    else:
+        print("the specified file does not exit or it is not a file.")
+
+
+
+def argument_r(logs_dir, output_dir):
+    if os.path.exists(logs_dir) and os.path.isdir(logs_dir):
+        for root_path, subdirectories, files in os.walk(logs_dir):
+            if len(subdirectories) != 0:
+                print("the specified directory contains subdirectories. only files are accepted.")
+                break
+            else:
+                for file in files:
+                    filename = root_path + '/' + file
+                    argument_f(filename, output_dir)
+    else:
+        print("the specified directory does not exist or it is not a directory.")
 
 
 if __name__== "__main__" :
