@@ -10,8 +10,8 @@ For Python dependencies, see requirements.txt
 
 ## Usage
 
-it is a command line tool, type the following command in the terminal to use this tool:    
-**python ./main_analyzer.py [-argument] [value]**
+It is a command line tool, the analysis results will be generated in "output" subdirectory of your amun-log-analyzer installation.  
+To use this tool, type the command in the terminal: **python ./main_analyzer.py [-argument] [value]** 
 
 ### Usage of Arguments
 |          Args          |                             Description                               | Required / Optional |
@@ -20,7 +20,7 @@ it is a command line tool, type the following command in the terminal to use thi
 |   `-f`, `--filename`   |           Path of the amun log file that needs to be analyzed         |      Optional       |
 |   `-r`, `--recursion`  |           Path of the directory storing multiple amun log files       |      Optional       |
 |    `-o`, `--output`    | Directory in which to output any generated files, default is ./output |      Optional       |
-> **Note:** One of '-f' and '-r' must be specified.
+> **Note:** The two arguments '-f' and '-r' cannot be used simultaneously. But one of the two must be specified.
 
 ### Examples
 
