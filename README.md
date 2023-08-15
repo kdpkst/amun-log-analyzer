@@ -8,6 +8,21 @@ For information about the honeypot we used, visit https://github.com/kdpkst/amun
 
 For Python dependencies, see requirements.txt
 
-## How to Use
+## Usage
+
+it is a command line tool, type the following command in the terminal to use this tool:    
+**python ./main_analyzer.py [-argument] [value]**
+
+### Usage of Arguments
+|          Args          |                             Description                               | Required / Optional |
+|:----------------------:|:---------------------------------------------------------------------:|:-------------------:|
+|     `-h`, `--help`     |                   show this help message and exit                     |      Optional       |
+|   `-f`, `--filename`   |           Path of the amun log file that needs to be analyzed         |      Optional       |
+|   `-r`, `--recursion`  |           Path of the directory storing multiple amun log files       |      Optional       |
+|    `-o`, `--output`    | Directory in which to output any generated files, default is ./output |      Optional       |
+> **Note:** One of '-f' and '-r' must be specified.
+
+### Examples
+
 
 
