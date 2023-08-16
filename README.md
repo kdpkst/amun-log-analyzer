@@ -19,7 +19,8 @@ python ./main_analyzer.py [-argument] [value]
 ```
 > **Note:** Please ensure that you are in the installation directory of this project when running the command for it to work properly.
 
-### Usage of Arguments
+### Arguments Specification
+
 |          Args          |                             Description                               | Required / Optional |
 |:----------------------:|:---------------------------------------------------------------------:|:-------------------:|
 |     `-h`, `--help`     |                   show this help message and exit                     |      Optional       |
