@@ -20,6 +20,6 @@ The `web-version` folder houses the web-based version of the Log Analyzer. This 
 
 ## Contact
 
-If you have any questions, suggestions, or feedback, feel free to contact us at [jammiechen0@gmail.com](mailto:your@email.com).
+If you have any questions, suggestions, or feedback, feel free to contact the [developer](https://github.com/kdpkst).
 
 
