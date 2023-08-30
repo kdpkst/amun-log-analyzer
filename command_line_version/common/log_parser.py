@@ -58,6 +58,7 @@ class AmunLogParser:
                 attackerIP = match3.group(4)
                 log_data = self.update_log_data(log_data, 'port_scanned', own_port)
                 log_data = self.update_log_data(log_data, 'IP', attackerIP)
+            # no match, not amun log file-- how to handle??
             else:
                 continue
  
