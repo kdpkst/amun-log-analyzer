@@ -12,14 +12,16 @@ This project is organized into two main folders, each catering to a different us
 
 ### Command Line Version
 
-The `command-line` folder contains the command line version of the Log Analyzer. This version is perfect for users who prefer interacting with the tool through their terminal. To get started, simply follow the instructions within the `command-line/README.md` file.
+The `command-line` folder contains the command line version of the Log Analyzer. This version is perfect for users who prefer interacting with the tool through their terminal. To get started, simply follow the instructions within the [command-line-version/README.md](command-line-version/README.md) file.
 
 ### Web Version
 
-The `web-version` folder houses the web-based version of the Log Analyzer. This version provides more visual and interactive experience. Detailed setup and usage instructions can be found in the `web-version/README.md` file.
+The `web-version` folder houses the web-based version of the Log Analyzer. This version provides more visual and interactive experience. Detailed setup and usage instructions can be found in the [web-version/README.md](web-version/README.md) file.
 
 ## Contact
 
-If you have any questions, suggestions, or feedback, feel free to contact the [developer](https://github.com/kdpkst).
+If you have any questions, suggestions, or feedback, feel free to contact:  
+- [Yuzhen Chen](https://github.com/kdpkst)
+- [Bowen Li](https://github.com/refugee123456)
 
 
