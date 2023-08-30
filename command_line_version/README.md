@@ -1,19 +1,11 @@
-## Requirements
-
-- Python environment
-- Install Python dependencies
-
-    ``` 
-    pip install -r requirements.txt
-    ```
 ## Usage
 
-By default, the analysis results will be generated in a subdirectory named "output" of the command-line-version installation. To utilize this tool, execute the following command in the terminal: 
+By default, the analysis results will be generated in a subdirectory named "output" of the command_line_version installation. To utilize this tool, execute the following command in the terminal: 
 
 ```
 python ./main_analyzer.py [-argument] [value]
 ```
-> **Note:** Please ensure that you are in the command-line-version directory when running the command.
+> **Note:** Please ensure that you are in the command_line_version directory when running the command.
 
 ### Arguments Specification
 
