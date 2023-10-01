@@ -18,10 +18,3 @@ The `command_line_version` folder contains the command line version of the Log A
 
 The `web_version` folder houses the web-based version of the Log Analyzer. This version provides more visual and interactive experience. Detailed setup and usage instructions can be found in the [web_version/README.md](web_version/README.md) file.
 
-## Contact
-
-If you have any questions, suggestions, or feedback, feel free to contact:  
-- [Yuzhen Chen](https://github.com/kdpkst)
-- [Bowen Li](https://github.com/refugee123456)
-
-
